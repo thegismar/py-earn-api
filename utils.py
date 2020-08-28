@@ -1,13 +1,13 @@
 from yclient import ChainClient
 import pymongo
-import pandas as pd
+import os
 from pathlib import Path
 import time
 from tqdm import tqdm
 
 
 def get_archive_node():
-    return 'https://api.archivenode.io/73w07ccm19lzdnx9gp01ctp173w07ccm'
+    return os.getenv('ARCHIVENODE_API')
 
 
 def get_project_root():
@@ -15,10 +15,7 @@ def get_project_root():
 
 
 def get_mongo():
-    return 'mongodb://thegismar:maugan00@cluster0-shard-00-00.mr9b8.mongodb.net:27017,' \
-           'cluster0-shard-00-01.mr9b8.mongodb.net:27017,' \
-           'cluster0-shard-00-02.mr9b8.mongodb.net:27017/yVault?ssl=true&replicaSet=atlas-ciekb2-shard-0&authSource' \
-           '=admin&retryWrites=true&w=majority '
+    return os.getenv('MONGO')
 
 
 def get_archive_client():
